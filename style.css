@@ -1,0 +1,19 @@
+.container{
+    width: 500px;
+    height: 600px;
+    margin: auto;
+    background:skyblue;
+}
+.circle{
+    width: 200px;
+    height: 200px;
+    background-color: gray;
+    border-radius: 50%;
+    margin-top: 30opx !important;  
+    margin: auto;
+}
+#btn{
+    margin-left: 28%;
+    margin-right:2%;
+    margin-bottom: 10px;
+}
