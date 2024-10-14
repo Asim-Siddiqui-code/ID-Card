@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Profile Card</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .profile-card {
+            width: 300px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .profile-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .profile-card h2 {
+            margin: 10px 0;
+            font-size: 1.5rem;
+        }
+
+        .profile-card p {
+            margin: 0;
+            font-size: 1rem;
+            color: #666;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 100%;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .controls {
+            margin-top: 20px;
+        }
+
+        .controls button {
+            background-color: #007bff;
+        }
+
+        .controls button.reset {
+            background-color: #dc3545;
+        }
+
+        .controls button.reset:hover {
+            background-color: #c82333;
+        }
+
+        .controls button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-card" id="profile-card">
+        <img src="profile.png" alt="Profile Picture" id="profile-img">
+        <h2 id="profile-name">John Doe</h2>
+        <p id="profile-description">Web Developer & Designer</p>
+
+        <div class="controls">
+            <input type="text" id="name-input" placeholder="Enter new name">
+            <button onclick="changeName()">Change Name</button>
+            <input type="text" id="description-input" placeholder="Enter new description">
+            <button onclick="changeDescription()">Change Description</button>
+            <button onclick="changeProfilePicture()">Change Profile Picture</button>
+            <input type="color" id="color-picker">
+            <button onclick="changeBackgroundColor()">Change Background Color</button>
+            <button class="reset" onclick="resetProfile()">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        // Default profile values
+        const defaultProfile = {
+            name: "John Doe",
+            description: "Web Developer & Designer",
+            profilePic: "profile.png",
+            backgroundColor: "white"
+        };
+
+        // DOM Elements
+        const profileCard = document.getElementById("profile-card");
+        const profileName = document.getElementById("profile-name");
+        const profileDescription = document.getElementById("profile-description");
+        const profileImg = document.getElementById("profile-img");
+
+        // Change the profile name based on user input
+        function changeName() {
+            const newName = document.getElementById("name-input").value;
+            if (newName) {
+                profileName.textContent = newName;
+            }
+        }
+
+        // Change the profile description based on user input
+        function changeDescription() {
+            const newDescription = document.getElementById("description-input").value;
+            if (newDescription) {
+                profileDescription.textContent = newDescription;
+            }
+        }
+
+        // Change the profile picture
+        function changeProfilePicture() {
+            const newImageURL = prompt("Enter the URL of the new profile picture:");
+            if (newImageURL) {
+                profileImg.src = newImageURL;
+            }
+        }
+
+        // Change the background color of the profile card
+        function changeBackgroundColor() {
+            const colorPicker = document.getElementById("color-picker");
+            const newColor = colorPicker.value;
+            profileCard.style.backgroundColor = newColor;
+        }
+
+        // Reset the profile to its default state
+        function resetProfile() {
+            profileName.textContent = defaultProfile.name;
+            profileDescription.textContent = defaultProfile.description;
+            profileImg.src = defaultProfile.profilePic;
+            profileCard.style.backgroundColor = defaultProfile.backgroundColor;
+        }
+    </script>
+
+</body>
+</html>
